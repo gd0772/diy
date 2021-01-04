@@ -15,9 +15,10 @@ curl -fsSL  https://raw.githubusercontent.com/gd0772/other/main/zzz-default-sett
 curl -fsSL  https://raw.githubusercontent.com/gd0772/other/main/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
 # echo '替换system.lua文件'
 curl -fsSL  https://raw.githubusercontent.com/siropboy/other/master/patch/poweroff/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
-# echo '修改 系统菜单 里的app名称'
-
+# echo '修改 TTYD 名称'
+sed -i 's/ttyd/网页终端/g' package/lean/luci-app-ttyd/po/zh-cn/terminal.po
 # echo '修改 服务菜单 里的app名称'
+sed -i 's/UPnP/UPnP设置/g' feeds/luci/applications/luci-app-upnp/luasrc/controller/upnp.lua
 sed -i 's/解锁网易云灰色歌曲/音乐解锁/g' package/lean/luci-app-unblockmusic/po/zh-cn/unblockmusic.po
 # echo '修改 网络存储 名称'
 sed -i 's/网络存储/存储/g' package/lean/luci-app-vsftpd/po/zh-cn/vsftpd.po
