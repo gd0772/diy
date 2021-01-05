@@ -37,7 +37,6 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git ./package/diy/passwa
 git clone https://github.com/jerrykuku/luci-app-vssr.git ./package/diy/luci-app-vssr
 # echo '添加 京东签到'
 svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ ./package/diy/luci-app-jd-dailybonus
-git clone https://github.com/siropboy/sirpdboy-package/tree/main/node-request ./package/diy/node-request
 # echo '添加 应用过滤'
 git clone -b master --single-branch https://github.com/destan19/OpenAppFilter ./package/diy/OpenAppFilter
 # echo '添加 smartdns'
