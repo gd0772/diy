@@ -1,8 +1,7 @@
 ﻿#!/bin/bash
 #=================================================
 # Description: Build OpenWrt using GitHub Actions
-# echo '删除默认主题'
-# rm -rf ./package/lean/luci-theme-argon
+rm -rf ./package/lean/luci-theme-argon
 # echo '删除并替换luci-app-netdata'
 rm -rf ./package/lean/luci-app-netdata
 svn co https://github.com/gd0772/gd772-package/tree/main/luci-app-netdata ./package/lean/luci-app-netdata
@@ -34,7 +33,7 @@ git clone -b master https://github.com/vernesong/OpenClash.git ./package/diy/Ope
 # echo '添加 passwall'
 git clone https://github.com/xiaorouji/openwrt-passwall.git ./package/diy/passwall
 # echo '添加 HelloWorld'
-git clone https://github.com/jerrykuku/luci-app-vssr.git ./package/diy/luci-app-vssr
+svn co https://github.com/jerrykuku/luci-app-vssr/trunk/ package/diy/luci-app-vssr
 # echo '添加 京东签到'
 svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ ./package/diy/luci-app-jd-dailybonus
 # echo '添加 应用过滤'
@@ -44,4 +43,5 @@ svn co https://github.com/gd0772/gd772-package/tree/main/smartdns ./feeds/packag
 sed -i "s/192.168.1.1/192.168.123.3/$lan_ip/g" package/base-files/files/bin/config_generate
 # sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
 # sed -i 's/KERNEL_TESTING_PATCHVER:=5.4/KERNEL_TESTING_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
+#  make && sudo make install
 ./scripts/feeds update -i
