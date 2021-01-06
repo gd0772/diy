@@ -18,6 +18,8 @@ sed -i 's/解锁网易云灰色歌曲/音乐解锁/g' package/lean/luci-app-unbl
 sed -i 's/网络存储/存储/g' package/lean/luci-app-vsftpd/po/zh-cn/vsftpd.po
 sed -i 's/Turbo ACC 网络加速/网络加速/g' package/lean/luci-app-flowoffload/po/zh-cn/flowoffload.po
 sed -i 's/Turbo ACC 网络加速/网络加速/g' package/lean/luci-app-sfe/po/zh-cn/sfe.po
+sed -i 's/ZeroTier/ZeroTier内网穿透/g' package/lean/luci-app-zerotier/luasrc/controller/zerotier.lua
+
 sed -i 's/带宽监控/统计/g' feeds/luci/applications/luci-app-nlbwmon/po/zh-cn/nlbwmon.po
 sed -i 's/invalid/# invalid/g' package/network/services/samba36/files/smb.conf.template
 sed -i 's/tables=1/tables=0/g' ./package/kernel/linux/files/sysctl-br-netfilter.conf
