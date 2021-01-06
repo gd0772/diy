@@ -4,9 +4,9 @@
 rm -rf ./package/lean/luci-theme-argon
 
 rm -rf ./package/lean/luci-app-netdata
-svn co https://github.com/gd0772/gd772-package/trunk/luci-app-netdata ./package/lean/luci-app-netdata
+svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-netdata ./package/lean/luci-app-netdata
 rm -rf ./feeds/packages/admin/netdata
-svn co https://github.com/gd0772/gd772-package/trunk/netdata ./feeds/packages/admin/netdata
+svn co https://github.com/sirpdboy/sirpdboy-package/trunk/netdata ./feeds/packages/admin/netdata
 
 curl -fsSL  https://raw.githubusercontent.com/gd0772/other/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
 curl -fsSL  https://raw.githubusercontent.com/gd0772/other/main/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
