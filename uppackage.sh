@@ -31,7 +31,7 @@ git clone -b master --single-branch https://github.com/destan19/OpenAppFilter ./
 svn co https://github.com/jerrykuku/luci-app-vssr/trunk/ package/diy/luci-app-vssr
 svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ ./package/diy/luci-app-jd-dailybonus
 svn co https://github.com/gd0772/gd772-package/trunk/smartdns ./feeds/packages/net/smartdns
-sed -i "s/192.168.1.1/192.168.123.3/$lan_ip/g" package/base-files/files/bin/config_generate
+sed -i "s/192.168.1.1/192.168.123.3/g" package/base-files/files/bin/config_generate
 # sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
 # sed -i 's/KERNEL_TESTING_PATCHVER:=5.4/KERNEL_TESTING_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
 #  make && sudo make install
