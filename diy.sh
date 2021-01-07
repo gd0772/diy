@@ -5,11 +5,8 @@
 rm -rf ./package/lean/luci-theme-argon
 # echo '修改 默认IP'
 sed -i "s/192.168.1.1/192.168.123.3/g" package/base-files/files/bin/config_generate
-# echo '汉化实时监控'
-rm -rf ./package/lean/luci-app-netdata
-svn co https://github.com/gd0772/diy/trunk/luci-app-netdata ./package/lean/luci-app-netdata
-rm -rf ./feeds/packages/admin/netdata
-svn co https://github.com/gd0772/diy/trunk/netdata ./feeds/packages/admin/netdata
+# echo '添加 额外插件'
+git clone https://github.com/gd0772/package.git ./package/diy
 # echo '添加关机功能'
 curl -fsSL  https://raw.githubusercontent.com/gd0772/diy/main/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
 curl -fsSL  https://raw.githubusercontent.com/gd0772/diy/main/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
@@ -26,6 +23,11 @@ svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ package/diy/lu
 # echo '添加 SmartDNS'
 git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/diy/luci-app-smartdns
 git clone https://github.com/pymumu/openwrt-smartdns.git ./feeds/packages/net/smartdns
+# echo '汉化实时监控'
+rm -rf ./package/lean/luci-app-netdata
+svn co https://github.com/gd0772/diy/trunk/luci-app-netdata ./package/lean/luci-app-netdata
+rm -rf ./feeds/packages/admin/netdata
+svn co https://github.com/gd0772/diy/trunk/netdata ./feeds/packages/admin/netdata
 # echo '修改插件名称'
 sed -i 's/TTYD 终端/网页终端/g' package/lean/luci-app-ttyd/po/zh-cn/terminal.po
 sed -i 's/UPnP/UPnP设置/g' feeds/luci/applications/luci-app-upnp/luasrc/controller/upnp.lua
