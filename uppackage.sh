@@ -35,7 +35,8 @@ svn co https://github.com/jerrykuku/luci-app-vssr/trunk/ package/diy/luci-app-vs
 # echo '添加 京东签到'
 svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ ./package/diy/luci-app-jd-dailybonus
 # echo '添加 SmartDNS'
-svn co https://github.com/gd0772/gd772-package/trunk/smartdns ./feeds/packages/net/smartdns
+git clone https://github.com/pymumu/luci-app-smartdns.git ./package/diy/luci-app-smartdns
+git clone https://github.com/pymumu/openwrt-smartdns.git ./feeds/packages/net/smartdns
 # echo '修改 默认IP'
 sed -i "s/192.168.1.1/192.168.123.3/g" package/base-files/files/bin/config_generate
 # sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
