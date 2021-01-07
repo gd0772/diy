@@ -23,7 +23,8 @@ git clone -b master --single-branch https://github.com/destan19/OpenAppFilter ./
 svn co https://github.com/jerrykuku/luci-app-vssr/trunk/ package/diy/luci-app-vssr
 # echo '添加 京东签到'
 svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ ./package/diy/luci-app-jd-dailybonus
-# echo '添加 SmartDNS 依赖'
+# echo '添加 SmartDNS'
+git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/diy/luci-app-smartdns
 git clone https://github.com/pymumu/openwrt-smartdns.git ./feeds/packages/net/smartdns
 # echo '修改插件名称'
 sed -i 's/TTYD 终端/网页终端/g' package/lean/luci-app-ttyd/po/zh-cn/terminal.po
