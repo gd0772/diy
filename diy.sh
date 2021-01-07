@@ -18,11 +18,11 @@ git clone https://github.com/vernesong/OpenClash.git ./package/diy/OpenClash
 # echo '添加 Passwall'
 git clone https://github.com/xiaorouji/openwrt-passwall.git ./package/diy/passwall
 # echo '添加 应用过滤'
-git clone -b master --single-branch https://github.com/destan19/OpenAppFilter ./package/diy/OpenAppFilter
+git clone https://github.com/destan19/OpenAppFilter.git ./package/diy/OpenAppFilter
 # echo '添加 HelloWorld'
 svn co https://github.com/jerrykuku/luci-app-vssr/trunk/ package/diy/luci-app-vssr
 # echo '添加 京东签到'
-svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ ./package/diy/luci-app-jd-dailybonus
+svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ package/diy/luci-app-jd-dailybonus
 # echo '添加 SmartDNS'
 git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/diy/luci-app-smartdns
 git clone https://github.com/pymumu/openwrt-smartdns.git ./feeds/packages/net/smartdns
