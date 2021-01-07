@@ -11,7 +11,7 @@ svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-netdata ./pac
 rm -rf ./feeds/packages/admin/netdata
 svn co https://github.com/sirpdboy/sirpdboy-package/trunk/netdata ./feeds/packages/admin/netdata
 # echo '添加关机功能'
-curl -fsSL  https://raw.githubusercontent.com/gd0772/other/main/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
+curl -fsSL  https://raw.githubusercontent.com/gd0772/diy/main/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
 curl -fsSL  https://raw.githubusercontent.com/siropboy/other/master/patch/poweroff/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
 # echo '添加 小猫咪'
 git clone https://github.com/vernesong/OpenClash.git ./package/diy/OpenClash
