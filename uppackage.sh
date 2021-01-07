@@ -4,10 +4,10 @@
 # echo '删除重复主题'
 rm -rf ./package/lean/luci-theme-argon
 # echo '汉化实时监控'
-# rm -rf ./package/lean/luci-app-netdata
-# svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-netdata ./package/lean/luci-app-netdata
-# rm -rf ./feeds/packages/admin/netdata
-# svn co https://github.com/sirpdboy/sirpdboy-package/trunk/netdata ./feeds/packages/admin/netdata
+rm -rf ./package/lean/luci-app-netdata
+svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-netdata ./package/lean/luci-app-netdata
+rm -rf ./feeds/packages/admin/netdata
+svn co https://github.com/sirpdboy/sirpdboy-package/trunk/netdata ./feeds/packages/admin/netdata
 # echo '版本号更新'
 curl -fsSL  https://raw.githubusercontent.com/gd0772/other/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
 # echo '添加关机功能'
