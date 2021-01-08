@@ -17,9 +17,6 @@ rm -rf ./package/lean/luci-app-cpufreq
 # echo '修改 默认IP'
 sed -i "s/192.168.1.1/192.168.123.3/g" package/base-files/files/bin/config_generate
 
-# echo '添加 额外插件'
-git clone https://github.com/gd0772/package.git ./package/diy
-
 # echo '添加关机功能'
 curl -fsSL  https://raw.githubusercontent.com/gd0772/diy/main/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
 curl -fsSL  https://raw.githubusercontent.com/gd0772/diy/main/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
