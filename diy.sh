@@ -4,15 +4,17 @@
 # echo '删除重复主题'
 rm -rf ./package/lean/luci-theme-argon
 # echo '删除重复插件'
+
 rm -rf ./feeds/packages/net/smartdns
 rm -rf ./feeds/packages/admin/netdata
 rm -rf ./package/lean/luci-app-netdata
+rm -rf ./package/lean/luci-app-cpufreq
 rm -rf ./package/lean/luci-app-zerotier
 rm -rf ./package/lean/luci-app-ipsec-vpnd
 rm -rf ./package/lean/luci-app-usb-printer
 rm -rf ./package/lean/luci-app-v2ray-server
 rm -rf ./package/lean/luci-app-softethervpn
-rm -rf ./package/lean/luci-app-cpufreq
+rm -rf ./package/lean/luci-app-openvpn-server
 
 # echo '修改 默认IP'
 sed -i "s/192.168.1.1/192.168.123.3/g" package/base-files/files/bin/config_generate
@@ -50,7 +52,6 @@ sed -i 's/挂载 SMB 网络共享/挂载共享/g' package/lean/luci-app-cifs-mou
 sed -i 's/BaiduPCS Web/百毒网盘/g' package/lean/luci-app-baidupcs-web/luasrc/controller/baidupcs-web.lua
 sed -i 's/Turbo ACC 网络加速/网络加速/g' package/lean/luci-app-flowoffload/po/zh-cn/flowoffload.po
 sed -i 's/Turbo ACC 网络加速/网络加速/g' package/lean/luci-app-sfe/po/zh-cn/sfe.po
-sed -i 's/ZeroTier/ZeroTier内网穿透/g' package/lean/luci-app-zerotier/luasrc/controller/zerotier.lua
 sed -i 's/带宽监控/统计/g' feeds/luci/applications/luci-app-nlbwmon/po/zh-cn/nlbwmon.po
 sed -i 's/invalid/# invalid/g' package/lean/samba4/files/smb.conf.template
 
