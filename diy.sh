@@ -3,8 +3,8 @@
 # Description: Build OpenWrt using GitHub Actions
 # echo '删除重复主题'
 rm -rf ./package/lean/luci-theme-argon
-# echo '删除重复插件'
 
+# echo '删除重复插件'
 rm -rf ./feeds/packages/net/smartdns
 rm -rf ./feeds/packages/admin/netdata
 rm -rf ./package/lean/luci-app-netdata
