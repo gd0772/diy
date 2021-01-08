@@ -4,13 +4,21 @@
 # echo '删除重复主题'
 rm -rf ./package/lean/luci-theme-argon
 # echo '删除重复插件'
-rm -rf ./package/lean/luci-app-v2ray-server
+rm -rf ./feeds/packages/net/smartdns
+rm -rf ./feeds/packages/admin/netdata
+rm -rf ./package/lean/luci-app-netdata
 rm -rf ./package/lean/luci-app-zerotier
+rm -rf ./package/lean/luci-app-ipsec-vpnd
+rm -rf ./package/lean/luci-app-usb-printer
+rm -rf ./package/lean/luci-app-v2ray-server
 rm -rf ./package/lean/luci-app-softethervpn
+
 # echo '修改 默认IP'
 sed -i "s/192.168.1.1/192.168.123.3/g" package/base-files/files/bin/config_generate
+
 # echo '添加 额外插件'
 git clone https://github.com/gd0772/package.git ./package/diy
+
 # echo '添加关机功能'
 curl -fsSL  https://raw.githubusercontent.com/gd0772/diy/main/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
 curl -fsSL  https://raw.githubusercontent.com/gd0772/diy/main/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
@@ -24,13 +32,11 @@ git clone https://github.com/destan19/OpenAppFilter.git ./package/diy/OpenAppFil
 svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ package/diy/luci-app-jd-dailybonus
 # echo '添加 SmartDNS'
 git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/diy/luci-app-smartdns
-rm -rf ./feeds/packages/net/smartdns
 git clone https://github.com/pymumu/openwrt-smartdns.git ./feeds/packages/net/smartdns
 # echo '汉化实时监控'
-rm -rf ./package/lean/luci-app-netdata
 svn co https://github.com/gd0772/diy/trunk/luci-app-netdata ./package/lean/luci-app-netdata
-rm -rf ./feeds/packages/admin/netdata
 svn co https://github.com/gd0772/diy/trunk/netdata ./feeds/packages/admin/netdata
+
 # echo '修改插件名称'
 sed -i 's/TTYD 终端/网页终端/g' package/lean/luci-app-ttyd/po/zh-cn/terminal.po
 sed -i 's/广告屏蔽大师 Plus+/广告屏蔽/g' package/lean/luci-app-adbyby-plus/po/zh-cn/adbyby.po
@@ -47,8 +53,10 @@ sed -i 's/Turbo ACC 网络加速/网络加速/g' package/lean/luci-app-sfe/po/zh
 sed -i 's/ZeroTier/ZeroTier内网穿透/g' package/lean/luci-app-zerotier/luasrc/controller/zerotier.lua
 sed -i 's/带宽监控/统计/g' feeds/luci/applications/luci-app-nlbwmon/po/zh-cn/nlbwmon.po
 sed -i 's/invalid/# invalid/g' package/lean/samba4/files/smb.conf.template
+
 # echo '版本号更新'
 curl -fsSL  https://raw.githubusercontent.com/gd0772/other/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
+
 # sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
 # sed -i 's/KERNEL_TESTING_PATCHVER:=5.4/KERNEL_TESTING_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
 ./scripts/feeds update -i
