@@ -5,7 +5,8 @@
 rm -rf ./package/lean/luci-theme-argon
 # echo '删除重复插件'
 rm -rf ./package/lean/luci-app-v2ray-server
-
+rm -rf ./package/lean/luci-app-zerotier
+rm -rf ./package/lean/luci-app-softethervpn
 # echo '修改 默认IP'
 sed -i "s/192.168.1.1/192.168.123.3/g" package/base-files/files/bin/config_generate
 # echo '添加 额外插件'
@@ -19,8 +20,6 @@ git clone https://github.com/vernesong/OpenClash.git ./package/diy/OpenClash
 git clone https://github.com/xiaorouji/openwrt-passwall.git ./package/diy/passwall
 # echo '添加 应用过滤'
 git clone https://github.com/destan19/OpenAppFilter.git ./package/diy/OpenAppFilter
-# echo '添加 HelloWorld'
-svn co https://github.com/jerrykuku/luci-app-vssr/trunk/ package/diy/luci-app-vssr
 # echo '添加 京东签到'
 svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ package/diy/luci-app-jd-dailybonus
 # echo '添加 SmartDNS'
