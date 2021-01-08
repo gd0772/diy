@@ -1,8 +1,11 @@
 #!/bin/bash
 #=================================================
 # Description: Build OpenWrt using GitHub Actions
-# echo '删除重复主题'
+# echo '删除重复多余主题'
+rm -rf ./feeds/freifunk/themes
+rm -rf ./package/luci-theme-netgear
 rm -rf ./package/lean/luci-theme-argon
+rm -rf ./feeds/luci/themes/luci-theme-material
 
 # echo '删除重复插件'
 rm -rf ./feeds/packages/net/smartdns
