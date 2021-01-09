@@ -41,6 +41,7 @@ svn co https://github.com/gd0772/diy/trunk/luci-app-netdata ./package/lean/luci-
 svn co https://github.com/gd0772/diy/trunk/netdata ./feeds/packages/admin/netdata
 
 # echo '修改插件名称'
+sed -i 's/ShadowSocksR Plus+/SSR Plus+/g' feeds/helloworld/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
 sed -i 's/TTYD 终端/网页终端/g' package/lean/luci-app-ttyd/po/zh-cn/terminal.po
 sed -i 's/广告屏蔽大师 Plus+/广告屏蔽/g' package/lean/luci-app-adbyby-plus/po/zh-cn/adbyby.po
 sed -i 's/KMS 服务器/KMS 激活/g' package/lean/luci-app-vlmcsd/po/zh-cn/vlmcsd.zh-cn.po
