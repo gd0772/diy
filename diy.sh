@@ -3,7 +3,7 @@
 # Description: Build OpenWrt using GitHub Actions
 # echo '删除重复多余主题'
 rm -rf ./feeds/freifunk/themes
-rm -rf ./package/luci-theme-netgear
+rm -rf ./package/lean/luci-theme-netgear
 rm -rf ./package/lean/luci-theme-argon
 rm -rf ./feeds/luci/themes/luci-theme-material
 
@@ -18,6 +18,7 @@ rm -rf ./package/lean/luci-app-usb-printer
 rm -rf ./package/lean/luci-app-v2ray-server
 rm -rf ./package/lean/luci-app-softethervpn
 rm -rf ./package/lean/luci-app-openvpn-server
+rm -rf ./feeds/luci/applications/luci-app-rp-pppoe-server
 
 # echo '修改 默认IP'
 sed -i "s/192.168.1.1/192.168.123.3/g" package/base-files/files/bin/config_generate
