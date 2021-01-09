@@ -39,6 +39,9 @@ git clone https://github.com/pymumu/openwrt-smartdns.git ./feeds/packages/net/sm
 # echo '汉化实时监控'
 svn co https://github.com/gd0772/diy/trunk/luci-app-netdata ./package/lean/luci-app-netdata
 svn co https://github.com/gd0772/diy/trunk/netdata ./feeds/packages/admin/netdata
+# echo '替换 分流助手 实现归类'
+curl - fsSL  https://raw.githubusercontent.com/gd0772/diy/main/mwan3helper_status.htm > ./package/lean/luci-app-mwan3helper/luasrc/view/mwan3helper/mwan3helper_status.htm
+
 
 # echo '修改插件名称'
 sed -i 's/TTYD 终端/网页终端/g' package/lean/luci-app-ttyd/po/zh-cn/terminal.po
