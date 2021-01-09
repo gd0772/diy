@@ -63,8 +63,6 @@ sed -i 's/invalid/# invalid/g' package/lean/samba4/files/smb.conf.template
 # echo '插件归类'
 sed -i 's/\"services\"/\"nas\"/g' package/lean/luci-app-samba4/luasrc/controller/samba4.lua
 sed -i 's/\"services\"/\"network\"/g' package/lean/luci-app-mwan3helper/luasrc/controller/mwan3helper.lua
-sed -i 's/\"services\"/\"network\"/g' package/lean/luci-app-mwan3helper/luasrc/view/mwan3helper/mwan3helper_status.htm
-
 
 # echo '版本号更新'
 curl -fsSL  https://raw.githubusercontent.com/gd0772/other/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
