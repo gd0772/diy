@@ -62,8 +62,7 @@ sed -i 's/invalid/# invalid/g' package/lean/samba4/files/smb.conf.template
 
 # echo '插件归类'
 sed -i 's/\"services\"/\"nas\"/g' package/lean/luci-app-samba4/luasrc/controller/samba4.lua
-
-
+sed -i 's/\"services\"/\"network\"/g' package/lean/luci-app-mwan3helper/luasrc/controller/mwan3helper.lua
 
 
 
