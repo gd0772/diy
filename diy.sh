@@ -39,9 +39,6 @@ git clone https://github.com/pymumu/openwrt-smartdns.git ./feeds/packages/net/sm
 # echo '汉化实时监控'
 svn co https://github.com/gd0772/diy/trunk/luci-app-netdata ./package/lean/luci-app-netdata
 svn co https://github.com/gd0772/diy/trunk/netdata ./feeds/packages/admin/netdata
-# echo '替换 分流助手 实现归类'
-curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/mwan3helper_status.htm > ./package/lean/luci-app-mwan3helper/luasrc/view/mwan3helper/mwan3helper_status.htm
-
 
 # echo '修改插件名称'
 sed -i 's/TTYD 终端/网页终端/g' package/lean/luci-app-ttyd/po/zh-cn/terminal.po
@@ -63,9 +60,11 @@ sed -i 's/Turbo ACC 网络加速/网络加速/g' package/lean/luci-app-sfe/po/zh
 sed -i 's/带宽监控/统计/g' feeds/luci/applications/luci-app-nlbwmon/po/zh-cn/nlbwmon.po
 sed -i 's/invalid/# invalid/g' package/lean/samba4/files/smb.conf.template
 
-# echo '插件归类'
+# echo '移动 网络共享 到 存储菜单'
 sed -i 's/\"services\"/\"nas\"/g' package/lean/luci-app-samba4/luasrc/controller/samba4.lua
+# echo '移动 分流助手 到 网络菜单'
 sed -i 's/\"services\"/\"network\"/g' package/lean/luci-app-mwan3helper/luasrc/controller/mwan3helper.lua
+curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/mwan3helper_status.htm > ./package/lean/luci-app-mwan3helper/luasrc/view/mwan3helper/mwan3helper_status.htm
 
 # echo '版本号更新'
 curl -fsSL  https://raw.githubusercontent.com/gd0772/other/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
