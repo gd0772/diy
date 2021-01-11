@@ -18,6 +18,7 @@ rm -rf ./package/lean/luci-app-usb-printer
 rm -rf ./package/lean/luci-app-v2ray-server
 rm -rf ./package/lean/luci-app-softethervpn
 rm -rf ./package/lean/luci-app-openvpn-server
+rm -rf ./feeds/luci/applications/luci-app-openvpn
 rm -rf ./feeds/luci/applications/luci-app-rp-pppoe-server
 
 # echo '修改 默认IP'
