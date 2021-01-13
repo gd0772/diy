@@ -12,7 +12,7 @@ KERNEL_VERSION="5.4.86-flippy-51+o"
 #KERNEL_VERSION="5.9.16-flippy-51+"
 SUBVER=$1
 # Armbian
-LNX_IMG="/home/gd772/N1/Armbian/Armbian_20.10_Aml-s9xxx_buster_${KERNEL_VERSION}.img"
+LNX_IMG="/N1/Armbian/Armbian_20.10_Aml-s9xxx_buster_${KERNEL_VERSION}.img"
 
 # +o OR + flag
 if echo $KERNEL_VERSION | grep -E '*\+$';then
