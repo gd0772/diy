@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 #=================================================
 # Description: Build OpenWrt using GitHub Actions
 # echo '删除重复多余主题'
@@ -27,8 +27,8 @@ sed -i "s/192.168.1.1/192.168.123.2/g" package/base-files/files/bin/config_gener
 sed -i "s/OpenWrt/N1/g" package/base-files/files/bin/config_generate
 
 # echo '添加关机功能'
-curl -fsSL  https://raw.githubusercontent.com/gd0772/diy/main/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
-curl -fsSL  https://raw.githubusercontent.com/gd0772/diy/main/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
+curl -fsSL  https://raw.githubusercontent.com/gd0772/diy/main/public/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
+curl -fsSL  https://raw.githubusercontent.com/gd0772/diy/main/public/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
 # echo '添加 SSR Plus+'
 git clone https://github.com/Mattraks/helloworld.git ./package/diy/ssrplus
 # echo '添加 小猫咪'
@@ -43,8 +43,8 @@ svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ package/diy/lu
 git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/diy/luci-app-smartdns
 git clone https://github.com/pymumu/openwrt-smartdns.git ./feeds/packages/net/smartdns
 # echo '汉化实时监控'
-svn co https://github.com/gd0772/diy/trunk/luci-app-netdata ./package/lean/luci-app-netdata
-svn co https://github.com/gd0772/diy/trunk/netdata ./feeds/packages/admin/netdata
+svn co https://github.com/gd0772/diy/trunk/public/luci-app-netdata ./package/lean/luci-app-netdata
+svn co https://github.com/gd0772/diy/trunk/public/netdata ./feeds/packages/admin/netdata
 
 # echo '修改插件名称'
 sed -i 's/TTYD 终端/网页终端/g' package/lean/luci-app-ttyd/po/zh-cn/terminal.po
@@ -76,7 +76,7 @@ curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/mwan3helper_status.
 # echo '添加自定义防火墙说明'
 curl -fsSL  https://raw.githubusercontent.com/gd0772/diy/main/firewall.user > ./package/network/config/firewall/files/firewall.user
 # echo '版本号更新'
-curl -fsSL  https://raw.githubusercontent.com/gd0772/other/main/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
+curl -fsSL  https://raw.githubusercontent.com/gd0772/diy/main/public/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
 # echo '更换内核'
 sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=4.19/g' ./target/linux/mvebu/Makefile
 sed -i 's/KERNEL_TESTING_PATCHVER:=5.4/KERNEL_TESTING_PATCHVER:=4.19/g' ./target/linux/mvebu/Makefile
