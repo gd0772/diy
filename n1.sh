@@ -48,6 +48,8 @@ svn co https://github.com/gd0772/diy/trunk/public/luci-app-netdata ./package/lea
 svn co https://github.com/gd0772/diy/trunk/public/netdata ./feeds/packages/admin/netdata
 # echo '替换USB打印'
 svn co https://github.com/gd0772/diy/trunk/public/luci-app-usb-printer ./package/lean/luci-app-usb-printer
+# echo '替换openvpn客户端'
+svn co https://github.com/gd0772/diy/trunk/public/luci-app-openvpn ./feeds/luci/applications/luci-app-openvpn
 
 # echo '修改插件名称'
 sed -i 's/TTYD 终端/网页终端/g' package/lean/luci-app-ttyd/po/zh-cn/terminal.po
