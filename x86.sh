@@ -42,8 +42,8 @@ svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ package/diy/lu
 git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/diy/luci-app-smartdns
 git clone https://github.com/pymumu/openwrt-smartdns.git ./feeds/packages/net/smartdns
 # echo '汉化实时监控'
-svn co https://github.com/gd0772/diy/trunk/luci-app-netdata ./package/lean/luci-app-netdata
-svn co https://github.com/gd0772/diy/trunk/netdata ./feeds/packages/admin/netdata
+svn co https://github.com/gd0772/diy/trunk/public/luci-app-netdata ./package/lean/luci-app-netdata
+svn co https://github.com/gd0772/diy/trunk/public/netdata ./feeds/packages/admin/netdata
 # echo '替换USB打印'
 svn co https://github.com/gd0772/diy/trunk/public/luci-app-usb-printer ./package/lean/luci-app-usb-printer
 # echo '替换openvpn客户端'
