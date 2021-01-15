@@ -78,10 +78,10 @@ sed -i 's/\"services\"/\"network\"/g' package/lean/luci-app-mwan3helper/luasrc/c
 curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/mwan3helper_status.htm > ./package/lean/luci-app-mwan3helper/luasrc/view/mwan3helper/mwan3helper_status.htm
 
 # echo '添加自定义防火墙说明'
-curl -fsSL  https://raw.githubusercontent.com/gd0772/diy/main/public/firewall.user > ./package/network/config/firewall/files/firewall.user
+curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/firewall.user > ./package/network/config/firewall/files/firewall.user
 
 # echo '版本号更新'
-curl -fsSL  https://raw.githubusercontent.com/gd0772/diy/main/public/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
+curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
 
 # echo '更换内核'
 sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
