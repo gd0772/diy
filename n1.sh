@@ -30,7 +30,7 @@ sed -i "s/OpenWrt/N1/g" package/base-files/files/bin/config_generate
 # echo '添加关机功能'
 curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
 curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
-curl -fsSL https://github.com/gd0772/diy/raw/main/public/index.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
+curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/index.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
 
 # echo '添加 SSR Plus+'
 git clone https://github.com/Mattraks/helloworld.git ./package/diy/ssrplus
