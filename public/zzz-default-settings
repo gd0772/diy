@@ -16,12 +16,21 @@ rm -f /usr/lib/lua/luci/view/admin_status/index/upnp.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/ddns.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/minidlna.htm
 
+uci set flowoffload.@flow[0].flow_offloading='0'
+uci set flowoffload.@flow[0].bbr='1'
+uci commit flowoffload
+
 sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/aria2.lua
 sed -i 's/services/nas/g' /usr/lib/lua/luci/view/aria2/overview_status.htm
 sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/hd_idle.lua
 sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/transmission.lua
 sed -i 's/services/g' /usr/lib/lua/luci/controller/p910nd.lua
 sed -i 's/services/g' /usr/lib/lua/luci/controller/xunlei.lua
+
+sed -i 's/\"services\"/\"control\"/g' /usr/lib/lua/luci/controller/wol.lua
+sed -i 's/\"system\"/\"control\"/g' /usr/lib/lua/luci/controller/autoreboot.lua
+sed -i 's/\"system\"/\"control\"/g' /usr/lib/lua/luci/controller/autopoweroff.lua
+sed -i 's/\"network\"/\"control\"/g' /usr/lib/lua/luci/controller/eqos.lua
 
 ln -sf /sbin/ip /usr/bin/ip
 
