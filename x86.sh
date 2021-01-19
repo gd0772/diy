@@ -43,8 +43,6 @@ svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ package/diy/lu
 # echo '添加 SmartDNS'
 git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/diy/luci-app-smartdns
 git clone https://github.com/pymumu/openwrt-smartdns.git ./feeds/packages/net/smartdns
-# echo '添加 UUGameAcc'
-git clone https://github.com/BCYDTZ/luci-app-UUGameAcc.git package/diy/luci-app-UUGameAcc
 # echo '汉化实时监控'
 svn co https://github.com/gd0772/diy/trunk/public/luci-app-netdata ./package/lean/luci-app-netdata
 svn co https://github.com/gd0772/diy/trunk/public/netdata ./feeds/packages/admin/netdata
