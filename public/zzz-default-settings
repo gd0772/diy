@@ -24,9 +24,8 @@ uci set sfe.config.enabled='0'
 uci set sfe.config.bbr='1'
 uci commit sfe
 
-uci set vsftpd.@listen[0].enable4=0
+uci set vsftpd.@listen[0].enable4='0'
 uci commit vsftpd
-/etc/init.d/vsftpd stop
 
 sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/aria2.lua
 sed -i 's/services/nas/g' /usr/lib/lua/luci/view/aria2/overview_status.htm
