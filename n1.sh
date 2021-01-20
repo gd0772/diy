@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 #=================================================
 # Description: Build OpenWrt using GitHub Actions
 # echo '删除重复多余主题'
