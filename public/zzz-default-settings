@@ -16,9 +16,13 @@ rm -f /usr/lib/lua/luci/view/admin_status/index/upnp.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/ddns.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/minidlna.htm
 
-uci set flowoffload.@flow[0].flow_offloading='0'
-uci set flowoffload.@flow[0].bbr='1'
-uci commit flowoffload
+# uci set flowoffload.@flow[0].flow_offloading='0'
+# uci set flowoffload.@flow[0].bbr='1'
+# uci commit flowoffload
+
+uci set sfe.config.enabled='0'
+uci set sfe.config.bbr='1'
+uci commit sfe
 
 uci set vsftpd.@listen[0].enable4=0
 uci commit vsftpd
