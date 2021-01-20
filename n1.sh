@@ -33,7 +33,7 @@ curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/system.lua >
 curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/N1/index.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
 
 # echo '添加 SSR Plus+'
-git clone https://github.com/Mattraks/helloworld.git ./package/diy/ssrplus
+git clone https://github.com/fw876/helloworld.git ./package/diy/ssrplus
 # echo '添加 小猫咪'
 git clone https://github.com/vernesong/OpenClash.git ./package/diy/OpenClash
 # echo '添加 Passwall'
