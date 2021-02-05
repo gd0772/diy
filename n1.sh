@@ -27,9 +27,8 @@ sed -i "s/192.168.1.1/192.168.123.2/g" package/base-files/files/bin/config_gener
 # echo '修改 主机名'
 sed -i "s/OpenWrt/N1/g" package/base-files/files/bin/config_generate
 
-# echo '添加关机功能'
-curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
-curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
+# echo '替换系统文件'
+curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
 curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/N1/index.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
 
 # echo '添加 SSR Plus+'
@@ -149,8 +148,7 @@ sed -i 's/services/vpn/g' package/diy/OpenClash/luci-app-openclash/luasrc/view/o
 curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/firewall.user > ./package/network/config/firewall/files/firewall.user
 
 # echo '版本号更新'
-curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
-
+sed -i "s/R21.2.1/R21.2.1 $(TZ=UTC-8 date "+%Y.%m.%d") Compilde by gd772/g" package/lean/default-settings/files/zzz-default-settings
 # echo '更换内核'
 #sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=4.19/g' ./target/linux/mvebu/Makefile
 #sed -i 's/KERNEL_TESTING_PATCHVER:=5.4/KERNEL_TESTING_PATCHVER:=4.19/g' ./target/linux/mvebu/Makefile
