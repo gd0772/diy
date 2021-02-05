@@ -105,6 +105,7 @@ sed -i 's/services/vpn/g' package/diy/ssrplus/luci-app-ssr-plus/luasrc/view/shad
 sed -i 's/services/vpn/g' package/diy/ssrplus/luci-app-ssr-plus/luasrc/view/shadowsocksr/subscribe.htm
 # echo '调整 PassWall 到 GFW 菜单'
 sed -i 's/services/vpn/g' package/diy/passwall/luci-app-passwall/luasrc/controller/passwall.lua
+sed -i 's/services/vpn/g' package/diy/passwall/luci-app-passwall/luasrc/model/cbi/passwall/api/api.lua
 # echo '调整 HelloWorld 到 GFW 菜单'
 sed -i 's/services/vpn/g' package/diy/luci-app-vssr/luasrc/controller/vssr.lua
 sed -i 's/services/vpn/g' package/diy/luci-app-vssr/luasrc/model/cbi/vssr/client-config.lua
