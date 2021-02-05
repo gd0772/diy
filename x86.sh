@@ -25,10 +25,9 @@ rm -rf ./feeds/luci/applications/luci-app-rp-pppoe-server
 # echo '修改 默认IP'
 sed -i "s/192.168.1.1/192.168.123.2/g" package/base-files/files/bin/config_generate
 
-# echo '添加关机功能'
-curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
-curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
+# echo '替换系统文件'
 curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/X86/index.htm > ./package/lean/autocore/files/x86/index.htm
+
 # echo '添加 SSR Plus+'
 git clone https://github.com/Mattraks/helloworld.git ./package/diy/ssrplus
 # echo '添加 小猫咪'
