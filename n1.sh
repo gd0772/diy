@@ -37,6 +37,8 @@ git clone https://github.com/fw876/helloworld.git ./package/diy/ssrplus
 git clone https://github.com/vernesong/OpenClash.git ./package/diy/OpenClash
 # echo '添加 Passwall'
 git clone https://github.com/xiaorouji/openwrt-passwall.git ./package/diy/passwall
+# echo '添加 HelloWorld'
+svn co https://github.com/jerrykuku/luci-app-vssr/trunk/ package/diy/luci-app-vssr
 # echo '添加 应用过滤'
 git clone https://github.com/destan19/OpenAppFilter.git ./package/diy/OpenAppFilter
 # echo '添加 京东签到'
