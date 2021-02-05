@@ -26,6 +26,7 @@ rm -rf ./feeds/luci/applications/luci-app-rp-pppoe-server
 sed -i "s/192.168.1.1/192.168.123.2/g" package/base-files/files/bin/config_generate
 
 # echo '替换系统文件'
+curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
 curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/X86/index.htm > ./package/lean/autocore/files/x86/index.htm
 
 # echo '添加 SSR Plus+'
