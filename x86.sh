@@ -146,7 +146,7 @@ sed -i 's/services/vpn/g' package/diy/OpenClash/luci-app-openclash/luasrc/view/o
 curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/firewall.user > ./package/network/config/firewall/files/firewall.user
 
 # echo '版本号更新'
-curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
+sed -i "s/R21.2.1/R21.2.1 $(TZ=UTC-8 date "+%Y.%m.%d") Compilde by gd772/g" package/lean/default-settings/files/zzz-default-settings
 
 # echo '更换内核'
 #sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
