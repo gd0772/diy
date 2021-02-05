@@ -42,6 +42,8 @@ svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ package/diy/lu
 # echo '添加 SmartDNS'
 git clone https://github.com/pymumu/luci-app-smartdns.git -b lede ./package/diy/luci-app-smartdns
 git clone https://github.com/pymumu/openwrt-smartdns.git ./feeds/packages/net/smartdns
+# echo '微信推送'
+git clone https://github.com/tty228/luci-app-serverchan.git ./package/diy/luci-app-serverchan
 # echo '汉化实时监控'
 svn co https://github.com/gd0772/diy/trunk/public/luci-app-netdata ./package/lean/luci-app-netdata
 svn co https://github.com/gd0772/diy/trunk/public/netdata ./feeds/packages/admin/netdata
