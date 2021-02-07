@@ -13,9 +13,7 @@ rm -rf ./feeds/packages/admin/netdata
 rm -rf ./package/lean/luci-app-netdata
 rm -rf ./package/lean/luci-app-cpufreq
 rm -rf ./package/lean/luci-app-usb-printer
-rm -rf ./package/lean/luci-app-softethervpn
 rm -rf ./package/lean/luci-app-jd-dailybonus
-rm -rf ./package/lean/luci-app-openvpn-server
 rm -rf ./feeds/luci/applications/luci-app-openvpn
 rm -rf ./feeds/luci/applications/luci-app-rp-pppoe-server
 
@@ -52,7 +50,6 @@ svn co https://github.com/gd0772/diy/trunk/public/luci-app-usb-printer ./package
 svn co https://github.com/gd0772/diy/trunk/public/luci-app-openvpn ./feeds/luci/applications/luci-app-openvpn
 
 # echo '修改插件名称'
-
 sed -i 's/ShadowSocksR Plus+/SSR Plus+/g' package/diy/ssrplus/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
 sed -i 's/广告屏蔽大师 Plus+/广告屏蔽/g' package/lean/luci-app-adbyby-plus/po/zh-cn/adbyby.po
 sed -i 's/京东签到服务/京东签到/g' package/diy/luci-app-jd-dailybonus/luasrc/controller/jd-dailybonus.lua
@@ -70,8 +67,12 @@ sed -i 's/Rclone/网盘挂载/g' package/lean/luci-app-rclone/luasrc/controller/
 sed -i 's/BaiduPCS Web/百毒网盘/g' package/lean/luci-app-baidupcs-web/luasrc/controller/baidupcs-web.lua
 sed -i 's/IPSec VPN 服务器/IPSec 服务/g' package/lean/luci-app-ipsec-vpnd/po/zh-cn/ipsec.po
 sed -i 's/V2ray 服务器/V2ray 服务/g' package/lean/luci-app-v2ray-server/po/zh-cn/v2ray_server.po
+sed -i 's/SoftEther VPN 服务器/SoftEther/g' package/lean/luci-app-softethervpn/po/zh-cn/softethervpn.po
+sed -i 's/"OpenVPN 服务器"/"OpenVPN"/g' package/lean/luci-app-openvpn-server/po/zh-cn/openvpn-server.po
 sed -i 's/firstchild(), "VPN"/firstchild(), "GFW"/g' package/lean/luci-app-zerotier/luasrc/controller/zerotier.lua
 sed -i 's/firstchild(), "VPN"/firstchild(), "GFW"/g' package/lean/luci-app-ipsec-vpnd/luasrc/controller/ipsec-server.lua
+sed -i 's/firstchild(), "VPN"/firstchild(), "GFW"/g' package/lean/luci-app-softethervpn/luasrc/controller/softethervpn.lua
+sed -i 's/firstchild(), "VPN"/firstchild(), "GFW"/g' package/lean/luci-app-openvpn-server/luasrc/controller/openvpn-server.lua
 sed -i 's/Turbo ACC 网络加速/网络加速/g' package/lean/luci-app-flowoffload/po/zh-cn/flowoffload.po
 sed -i 's/Turbo ACC 网络加速/网络加速/g' package/lean/luci-app-sfe/po/zh-cn/sfe.po
 sed -i 's/MWAN3 分流助手/分流助手/g' package/lean/luci-app-mwan3helper/po/zh-cn/mwan3helper.po
