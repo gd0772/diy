@@ -14,7 +14,6 @@ rm -rf ./package/lean/luci-app-netdata
 rm -rf ./package/lean/luci-app-cpufreq
 rm -rf ./package/lean/luci-app-usb-printer
 rm -rf ./package/lean/luci-app-jd-dailybonus
-rm -rf ./feeds/luci/applications/luci-app-openvpn
 rm -rf ./feeds/luci/applications/luci-app-rp-pppoe-server
 
 # echo '修改 默认IP'
@@ -33,7 +32,7 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git ./package/diy/passwa
 # echo '添加 HelloWorld'
 svn co https://github.com/jerrykuku/luci-app-vssr/trunk/ package/diy/luci-app-vssr
 # echo '添加 应用过滤'
-# git clone https://github.com/destan19/OpenAppFilter.git ./package/diy/OpenAppFilter
+git clone https://github.com/destan19/OpenAppFilter.git ./package/diy/OpenAppFilter
 # echo '添加 京东签到'
 svn co https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk/ package/diy/luci-app-jd-dailybonus
 # echo '添加 SmartDNS'
@@ -46,8 +45,6 @@ svn co https://github.com/gd0772/diy/trunk/public/luci-app-netdata ./package/lea
 svn co https://github.com/gd0772/diy/trunk/public/netdata ./feeds/packages/admin/netdata
 # echo '替换USB打印'
 svn co https://github.com/gd0772/diy/trunk/public/luci-app-usb-printer ./package/lean/luci-app-usb-printer
-# echo '替换openvpn客户端'
-svn co https://github.com/gd0772/diy/trunk/public/luci-app-openvpn ./feeds/luci/applications/luci-app-openvpn
 
 # echo '修改插件名称'
 sed -i 's/ShadowSocksR Plus+/SSR Plus+/g' package/diy/ssrplus/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
