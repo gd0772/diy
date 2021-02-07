@@ -74,6 +74,7 @@ sed -i 's/Turbo ACC 网络加速/网络加速/g' package/lean/luci-app-flowofflo
 sed -i 's/Turbo ACC 网络加速/网络加速/g' package/lean/luci-app-sfe/po/zh-cn/sfe.po
 sed -i 's/MWAN3 分流助手/分流助手/g' package/lean/luci-app-mwan3helper/po/zh-cn/mwan3helper.po
 sed -i 's/带宽监控/统计/g' feeds/luci/applications/luci-app-nlbwmon/po/zh-cn/nlbwmon.po
+sed -i 's/实时流量监测/流量监测/g' feeds/luci/applications/luci-app-nlbwmon/po/zh-cn/nlbwmon.po
 sed -i 's/invalid/# invalid/g' package/lean/samba4/files/smb.conf.template
 
 # echo '移动 网络共享 到 存储菜单'
