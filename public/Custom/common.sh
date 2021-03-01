@@ -20,34 +20,34 @@ popd
 rm -rf {LICENSE,README,README.md}
 rm -rf ./*/{LICENSE,README,README.md}
 rm -rf ./*/*/{LICENSE,README,README.md}
-mkdir -p files/usr/bin/AdGuardHome/data
+#mkdir -p files/usr/bin/AdGuardHome/data
 }
 
 ################################################################################################################
 
 
-# LEDE源码通用diy1.sh文件（除了openwrt机型文件夹）
+# LEAN源码通用diy1.sh文件（除了openwrt机型文件夹）
 
-Diy_lede() {
-echo "LEDE源码自定义1"
-rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
+Diy_lean() {
+echo "LEAN源码自定义1"
+#rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
 
-git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
+#git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
 
-git clone https://github.com/fw876/helloworld package/danshui/luci-app-ssr-plus
-git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
-git clone https://github.com/jerrykuku/luci-app-vssr package/danshui/luci-app-vssr
-git clone https://github.com/vernesong/OpenClash package/danshui/luci-app-openclash
-git clone https://github.com/frainzy1477/luci-app-clash package/danshui/luci-app-clash
-git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app-bypass
+#git clone https://github.com/fw876/helloworld package/danshui/luci-app-ssr-plus
+#git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
+#git clone https://github.com/jerrykuku/luci-app-vssr package/danshui/luci-app-vssr
+#git clone https://github.com/vernesong/OpenClash package/danshui/luci-app-openclash
+#git clone https://github.com/frainzy1477/luci-app-clash package/danshui/luci-app-clash
+#git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app-bypass
 
-find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' {}
-find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' {}
+#find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' {}
+#find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' {}
 }
 
-# LEDE源码通用diy2.sh文件（openwrt机型文件夹也使用）
+# LEAN源码通用diy2.sh文件（openwrt机型文件夹也使用）
 
-Diy_lede2() {
+Diy_lean2() {
 echo "LEDE源码自定义2"
 }
 
