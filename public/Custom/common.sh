@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 # 机型文件=${Modelfile}
 
 # 全脚本源码通用diy.sh文件
