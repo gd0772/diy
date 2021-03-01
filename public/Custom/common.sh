@@ -1,3 +1,4 @@
+#!/bin/bash
 # 机型文件=${Modelfile}
 
 # 全脚本源码通用diy.sh文件
@@ -12,9 +13,14 @@ chmod +x package/base-files/files/bin/* ./
 
 Diy_all2() {
 echo "all2"
+git clone https://github.com/openwrt-dev/po2lmo.git
+pushd po2lmo
+make && sudo make install
+popd
 rm -rf {LICENSE,README,README.md}
 rm -rf ./*/{LICENSE,README,README.md}
 rm -rf ./*/*/{LICENSE,README,README.md}
+mkdir -p files/usr/bin/AdGuardHome/data
 }
 
 ################################################################################################################
@@ -24,6 +30,19 @@ rm -rf ./*/*/{LICENSE,README,README.md}
 
 Diy_lede() {
 echo "LEDE源码自定义1"
+rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
+
+git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
+
+git clone https://github.com/fw876/helloworld package/danshui/luci-app-ssr-plus
+git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
+git clone https://github.com/jerrykuku/luci-app-vssr package/danshui/luci-app-vssr
+git clone https://github.com/vernesong/OpenClash package/danshui/luci-app-openclash
+git clone https://github.com/frainzy1477/luci-app-clash package/danshui/luci-app-clash
+git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app-bypass
+
+find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' {}
+find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' {}
 }
 
 # LEDE源码通用diy2.sh文件（openwrt机型文件夹也使用）
@@ -43,6 +62,22 @@ echo "LEDE源码自定义2"
 
 Diy_lienol() {
 echo "LIENOL源码自定义1"
+rm -rf package/diy/luci-app-adguardhome
+rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
+
+git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
+svn co https://github.com/281677160/openwrt-package/branches/usb/AutoUpdate package/base-files/files/bin
+chmod +x package/base-files/files/bin/* ./
+
+git clone https://github.com/fw876/helloworld package/danshui/luci-app-ssr-plus
+git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
+git clone https://github.com/jerrykuku/luci-app-vssr package/danshui/luci-app-vssr
+git clone https://github.com/vernesong/OpenClash package/danshui/luci-app-openclash
+git clone https://github.com/frainzy1477/luci-app-clash package/danshui/luci-app-clash
+git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app-bypass
+
+find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' {}
+find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' {}
 }
 
 # LIENOL源码通用diy2.sh文件（openwrt机型文件夹也使用）
@@ -62,6 +97,16 @@ echo "LIENOL源码自定义2"
 
 Diy_immortalwrt() {
 echo "天灵源码自定义1"
+rm -rf package/lienol/luci-app-timecontrol
+rm -rf package/ctcgfw/{luci-app-argon-config,luci-theme-argonv3,luci-app-adguardhome}
+rm -rf package/lean/{luci-theme-argon}
+
+git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
+svn co https://github.com/281677160/openwrt-package/branches/usb/AutoUpdate package/base-files/files/bin
+chmod +x package/base-files/files/bin/* ./
+
+git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app-bypass
+
 }
 
 # 天灵源码通用diy2.sh文件（openwrt机型文件夹也使用）
@@ -89,12 +134,25 @@ devices=("phicomm-n1" "rk3328" "s9xxx" "vplus")
 ################################################################################################################
 
 
+# 公告
+
+Diy_notice() {
+echo "#"
+echo "《公告内容》"
+echo "元宵佳节明月好"
+echo "安全出行要记好"
+echo "交通法规须遵守"
+echo "幸福安康样样好"
+echo "#"
+}
+
+
 Diy_xinxi() {
 DEVICES="$(awk -F '[="]+' '/TARGET_BOARD/{print $2}' .config)"
 SUBTARGETS="$(awk -F '[="]+' '/TARGET_SUBTARGET/{print $2}' .config)"
 if [[ "${DEVICES}" == "x86" ]]; then
 	TARGET_PRO="x86-${SUBTARGETS}"
-elif [[ ${Modelfile} =~ (Lean_phicomm_n1|Project_phicomm_n1) ]]; then
+elif [[ ${Modelfile} =~ (Lede_phicomm_n1|Project_phicomm_n1) ]]; then
 	TARGET_PRO="n1,Vplus,Beikeyun,L1Pro,S9xxx"
 else
 	TARGET_PRO="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/.*DEVICE_(.*)=y/\1/')"
