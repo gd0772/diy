@@ -26,7 +26,7 @@ echo "LEAN源码自定义1"
 
 # LEAN源码通用diy2.sh文件（openwrt机型文件夹也使用）
 
-Diy_lede2() {
+Diy_lean2() {
 echo "LEAN源码自定义2"
 }
 
