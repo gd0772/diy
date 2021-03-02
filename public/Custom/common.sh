@@ -13,41 +13,20 @@ chmod +x package/base-files/files/bin/* ./
 
 Diy_all2() {
 echo "all2"
-git clone https://github.com/openwrt-dev/po2lmo.git
-pushd po2lmo
-make && sudo make install
-popd
-rm -rf {LICENSE,README,README.md}
-rm -rf ./*/{LICENSE,README,README.md}
-rm -rf ./*/*/{LICENSE,README,README.md}
-#mkdir -p files/usr/bin/AdGuardHome/data
 }
 
 ################################################################################################################
 
 
-# LEAN源码通用diy1.sh文件（除了openwrt机型文件夹）
+# LEDE源码通用diy1.sh文件（除了openwrt机型文件夹）
 
 Diy_lean() {
 echo "LEAN源码自定义1"
-#rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
-
-#git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
-
-#git clone https://github.com/fw876/helloworld package/danshui/luci-app-ssr-plus
-#git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
-#git clone https://github.com/jerrykuku/luci-app-vssr package/danshui/luci-app-vssr
-#git clone https://github.com/vernesong/OpenClash package/danshui/luci-app-openclash
-#git clone https://github.com/frainzy1477/luci-app-clash package/danshui/luci-app-clash
-#git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app-bypass
-
-#find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' {}
-#find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' {}
 }
 
 # LEAN源码通用diy2.sh文件（openwrt机型文件夹也使用）
 
-Diy_lean2() {
+Diy_lede2() {
 echo "LEAN源码自定义2"
 }
 
