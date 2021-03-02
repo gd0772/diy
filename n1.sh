@@ -23,7 +23,7 @@ sed -i "s/OpenWrt/N1/g" package/base-files/files/bin/config_generate
 
 # echo '替换系统文件'
 curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
-curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/N1/index.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
+#curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/N1/index.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
 
 # echo '添加 SSR Plus+'
 git clone https://github.com/Mattraks/helloworld.git ./package/diy/ssrplus
