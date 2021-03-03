@@ -8,7 +8,7 @@
 Diy_all() {
 echo "all"
 mv build/${Modelfile}/{AutoUpdate.sh,AutoBuild_Tools.sh} package/base-files/files/bin
-chmod -R +x package/base-files/files/bin
+chmod -R +x package/base-files/files/bin/* ./
 git clone https://github.com/gd0772/package.git package/diy
 curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/x86.sh | sh
 #svn co https://github.com/jerrykuku/luci-theme-argon/branches/18.06 package/luci-theme-argon
@@ -125,15 +125,20 @@ echo ""
 
 Diy_xinxi_Base() {
 GET_TARGET_INFO
-if [[ "${TARGET_PROFILE}" =~ (x86-64|phicomm-k3|xiaomi_mir3g|d-team_newifi-d2|phicomm_k2p|k2p) ]]; then
-	Firmware_mz="${TARGET_PROFILE}自动适配"
-	Firmware_hz="${TARGET_PROFILE}自动适配"
+DEVICES="$(awk -F '[="]+' '/TARGET_BOARD/{print $2}' .config)"
+SUBTARGETS="$(awk -F '[="]+' '/TARGET_SUBTARGET/{print $2}' .config)"
+if [[ "${DEVICES}" == "x86" ]]; then
+	TARGET_PRO="x86-${SUBTARGETS}"
 else
 	Firmware_mz="${Up_Firmware}"
 	Firmware_hz="${Firmware_sfx}"
 fi
 if [[ "${Modelfile}" =~ (Lede_phicomm_n1|Project_phicomm_n1) ]]; then
 	TARGET_PROFILE="N1,Vplus,Beikeyun,L1Pro,S9xxx"
+else
+	TARGET_PRO="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/.*DEVICE_(.*)=y/\1/')"
+fi
+[[ -z "${TARGET_PRO}" ]] && TARGET_PRO="Unknown"
 fi
 echo ""
 echo " 编译源码: ${COMP2}"
