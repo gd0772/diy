@@ -35,7 +35,7 @@ rm -rf ./*/*/{LICENSE,README,README.md}
 
 Diy_lean() {
 echo "LEAN源码自定义1"
-cp -Rf build/common/LEDE/* "${PATH1}"
+cp -Rf build/common/* "${PATH1}"
 if [[ "${Modelfile}" == "Lean_x86_64" ]]; then
 sed -i '/IMAGES_GZIP/d' "${PATH1}/${CONFIG_FILE}" > /dev/null 2>&1
 echo -e "\nCONFIG_TARGET_IMAGES_GZIP=y" >> "${PATH1}/${CONFIG_FILE}"
@@ -123,7 +123,7 @@ echo ""
 }
 
 
-Diy_xinxi_Base() {
+Diy_xinxi() {
 GET_TARGET_INFO
 if [[ "${TARGET_PROFILE}" =~ (x86-64|phicomm-k3|xiaomi_mir3g|d-team_newifi-d2|phicomm_k2p|k2p) ]]; then
 	Firmware_mz="${TARGET_PROFILE}自动适配"
