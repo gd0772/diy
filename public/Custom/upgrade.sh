@@ -12,7 +12,7 @@ GET_TARGET_INFO() {
 	case "${REPO_URL}" in
 	https://github.com/coolsnowwolf/lede)
 		COMP1="openwrt"
-		COMP2="lede"
+		COMP2="lean"
 	;;
 	"https://github.com/Lienol/openwrt") 
 		COMP1="openwrt"
