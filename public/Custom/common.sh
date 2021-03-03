@@ -8,6 +8,9 @@ echo "all"
 mv common/{AutoUpdate.sh,AutoBuild_Tools.sh} package/base-files/files/bin
 chmod +x package/base-files/files/bin/* ./
 
+git clone https://github.com/gd0772/package.git package/diy
+
+# echo '删除多余主题'
 rm -rf ./feeds/freifunk/themes
 rm -rf ./package/lean/luci-theme-netgear
 rm -rf ./package/lean/luci-theme-argon
