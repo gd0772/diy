@@ -41,23 +41,6 @@ echo "LEAN源码自定义2"
 
 Diy_lienol() {
 echo "LIENOL源码自定义1"
-rm -rf package/diy/luci-app-adguardhome
-rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
-
-git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
-svn co https://github.com/281677160/openwrt-package/branches/usb/AutoUpdate package/base-files/files/bin
-chmod +x package/base-files/files/bin/* ./
-
-git clone https://github.com/fw876/helloworld package/danshui/luci-app-ssr-plus
-git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
-git clone https://github.com/jerrykuku/luci-app-vssr package/danshui/luci-app-vssr
-git clone https://github.com/vernesong/OpenClash package/danshui/luci-app-openclash
-git clone https://github.com/frainzy1477/luci-app-clash package/danshui/luci-app-clash
-git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app-bypass
-
-find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' {}
-find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' {}
-}
 
 # LIENOL源码通用diy2.sh文件（openwrt机型文件夹也使用）
 
@@ -76,15 +59,6 @@ echo "LIENOL源码自定义2"
 
 Diy_immortalwrt() {
 echo "天灵源码自定义1"
-rm -rf package/lienol/luci-app-timecontrol
-rm -rf package/ctcgfw/{luci-app-argon-config,luci-theme-argonv3,luci-app-adguardhome}
-rm -rf package/lean/{luci-theme-argon}
-
-git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
-svn co https://github.com/281677160/openwrt-package/branches/usb/AutoUpdate package/base-files/files/bin
-chmod +x package/base-files/files/bin/* ./
-
-git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app-bypass
 
 }
 
@@ -113,15 +87,16 @@ devices=("phicomm-n1" "rk3328" "s9xxx" "vplus")
 ################################################################################################################
 
 
-# 公告
+# 免责声明
 
 Diy_notice() {
 echo "#"
-echo "《公告内容》"
-echo "元宵佳节明月好"
-echo "安全出行要记好"
-echo "交通法规须遵守"
-echo "幸福安康样样好"
+echo "《免责声明》"
+echo "此自动编译脚本"
+echo "仅用于固件编译"
+echo "请遵守相关法律"
+echo "产生的任何行为"
+ echo "与脚本作者无关"
 echo "#"
 }
 
@@ -131,7 +106,7 @@ DEVICES="$(awk -F '[="]+' '/TARGET_BOARD/{print $2}' .config)"
 SUBTARGETS="$(awk -F '[="]+' '/TARGET_SUBTARGET/{print $2}' .config)"
 if [[ "${DEVICES}" == "x86" ]]; then
 	TARGET_PRO="x86-${SUBTARGETS}"
-elif [[ ${Modelfile} =~ (Lede_phicomm_n1|Project_phicomm_n1) ]]; then
+elif [[ ${Modelfile} =~ (Lean_phicomm_n1|Project_phicomm_n1) ]]; then
 	TARGET_PRO="n1,Vplus,Beikeyun,L1Pro,S9xxx"
 else
 	TARGET_PRO="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/.*DEVICE_(.*)=y/\1/')"
@@ -161,8 +136,6 @@ else
 fi
 if [[ ${UPLOAD_COWTRANSFER} == "true" ]]; then
 	echo "上传固件到到【奶牛快传】和【WETRANSFER】: 开启"
-else
-	echo "上传固件到到【奶牛快传】和【WETRANSFER】: 关闭"
 fi
 if [[ ${UPLOAD_RELEASE} == "true" ]]; then
 	echo "发布固件: 开启"
@@ -177,9 +150,6 @@ fi
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo "把定时自动更新插件编译进固件: 开启"
 	echo "定时更新固件版本：《${BANBEN}》"
-	echo "《请把“REPO_TOKEN”密匙设置好,没设置好密匙不能发布云端地址》"
-	echo "《x86-64、phicomm-k3、newifi-d2已自动适配固件名字跟后缀，无需自行设置了》"
-	echo "《如有其他机子可以用定时更新固件的话，请告诉我，我把固件名字跟后缀适配了》"
 else	
 	echo "把定时自动更新插件编译进固件: 关闭"
 fi
