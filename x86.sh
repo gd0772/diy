@@ -54,7 +54,7 @@ sed -i 's/PassWall/Pass Wall/g' package/diy/passwall/luci-app-passwall/po/zh-cn/
 sed -i 's/广告屏蔽大师 Plus+/广告屏蔽/g' package/lean/luci-app-adbyby-plus/po/zh-cn/adbyby.po
 sed -i 's/京东签到服务/京东签到/g' package/diy/luci-app-jd-dailybonus/luasrc/controller/jd-dailybonus.lua
 sed -i 's/KMS 服务器/KMS 激活/g' package/lean/luci-app-vlmcsd/po/zh-cn/vlmcsd.zh-cn.po
-sed -i 's/"UPnP"/"UPnP设置"/g' feeds/luci/applications/luci-app-upnp/po/zh-cn/upnp.po
+sed -i 's/msgstr "UPnP"/msgstr "UPnP设置"/g' feeds/luci/applications/luci-app-upnp/po/zh-cn/upnp.po
 sed -i 's/Frp 内网穿透/Frp 客户端/g' package/lean/luci-app-frpc/po/zh-cn/frp.po
 sed -i 's/Frps/Frp 服务端/g' package/lean/luci-app-frps/luasrc/controller/frps.lua
 sed -i 's/Nps 内网穿透/NPS 客户端/g' package/lean/luci-app-nps/po/zh-cn/nps.po
