@@ -7,8 +7,8 @@
 
 Diy_all() {
 echo "all"
-mv common/{AutoUpdate.sh,AutoBuild_Tools.sh} package/base-files/files/bin
-chmod +x package/base-files/files/bin/* ./
+mv build/${Modelfile}/{AutoUpdate.sh,AutoBuild_Tools.sh} package/base-files/files/bin
+chmod -R +x package/base-files/files/bin
 git clone https://github.com/gd0772/package.git package/diy
 curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/x86.sh | sh
 #svn co https://github.com/jerrykuku/luci-theme-argon/branches/18.06 package/luci-theme-argon
