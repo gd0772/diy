@@ -7,10 +7,11 @@
 
 Diy_all() {
 echo "all"
-git clone https://github.com/gd0772/package.git package/diy
-curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/x86.sh | sh
+git clone https://github.com/281677160/luci-app-autoupdate package/luci-app-autoupdate
 mv build/${Modelfile}/{AutoUpdate.sh,AutoBuild_Tools.sh} package/base-files/files/bin
 chmod -R +x package/base-files/files/bin
+#svn co https://github.com/jerrykuku/luci-theme-argon/branches/18.06 package/luci-theme-argon
+#svn co https://github.com/jerrykuku/luci-app-argon-config/trunk package/luci-app-argon-config
 }
 
 # 全脚本源码通用diy2.sh文件
@@ -24,20 +25,25 @@ popd
 rm -rf {LICENSE,README,README.md}
 rm -rf ./*/{LICENSE,README,README.md}
 rm -rf ./*/*/{LICENSE,README,README.md}
+#mkdir -p files/usr/bin/AdGuardHome/data
 }
 
 ################################################################################################################
 
 
-# LEAN源码通用diy1.sh文件
+# LEDE源码通用diy1.sh文件
 
 Diy_lean() {
 echo "LEAN源码自定义1"
-cp -Rf build/common/* "${PATH1}"
-if [[ "${Modelfile}" == "OpenWrt_x86_64" ]]; then
+cp -Rf build/common/LEDE/* "${PATH1}"
+if [[ "${Modelfile}" == "Lean_x86_64" ]]; then
 sed -i '/IMAGES_GZIP/d' "${PATH1}/${CONFIG_FILE}" > /dev/null 2>&1
 echo -e "\nCONFIG_TARGET_IMAGES_GZIP=y" >> "${PATH1}/${CONFIG_FILE}"
 fi
+#rm -rf package/lean/luci-theme-argon
+
+#git clone https://github.com/fw876/helloworld package/luci-app-ssr-plus
+
 }
 
 # LEAN源码通用diy2.sh文件（openwrt机型文件夹也使用）
@@ -110,12 +116,9 @@ devices=("phicomm-n1" "rk3328" "s9xxx" "vplus")
 
 Diy_notice() {
 echo ""
-echo "《免责声明》"
-echo "脚本仅用于编译路由固件"
-echo "不得传播用于商业行为"
-echo "须遵守相关法律法规"
-echo "产生任何后果与脚本作者无关"
-echo "特此声明！！！"
+echo "	《公告内容》"
+echo " 祝大家新年快乐、生活愉快！"
+echo " 使用中有疑问的可以加入电报群，跟群友交流"
 echo ""
 }
 
@@ -129,7 +132,7 @@ else
 	Firmware_mz="${Up_Firmware}"
 	Firmware_hz="${Firmware_sfx}"
 fi
-if [[ "${Modelfile}" =~ (Lean_phicomm_n1|Project_phicomm_n1) ]]; then
+if [[ "${Modelfile}" =~ (Lede_phicomm_n1|Project_phicomm_n1) ]]; then
 	TARGET_PROFILE="N1,Vplus,Beikeyun,L1Pro,S9xxx"
 fi
 echo ""
