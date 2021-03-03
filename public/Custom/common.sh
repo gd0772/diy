@@ -7,7 +7,7 @@
 
 Diy_all() {
 echo "all"
-git clone https://github.com/281677160/luci-app-autoupdate package/luci-app-autoupdate
+#git clone https://github.com/281677160/luci-app-autoupdate package/luci-app-autoupdate
 mv build/${Modelfile}/{AutoUpdate.sh,AutoBuild_Tools.sh} package/base-files/files/bin
 chmod -R +x package/base-files/files/bin
 #svn co https://github.com/jerrykuku/luci-theme-argon/branches/18.06 package/luci-theme-argon
