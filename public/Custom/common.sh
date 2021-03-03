@@ -7,11 +7,10 @@
 
 Diy_all() {
 echo "all"
-git clone https://github.com/281677160/luci-app-autoupdate package/luci-app-autoupdate
+git clone https://github.com/gd0772/package.git package/diy
+curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/x86.sh | sh
 mv build/${Modelfile}/{AutoUpdate.sh,AutoBuild_Tools.sh} package/base-files/files/bin
 chmod -R +x package/base-files/files/bin
-svn co https://github.com/jerrykuku/luci-theme-argon/branches/18.06 package/luci-theme-argon
-svn co https://github.com/jerrykuku/luci-app-argon-config/trunk package/luci-app-argon-config
 }
 
 # 全脚本源码通用diy2.sh文件
@@ -25,31 +24,29 @@ popd
 rm -rf {LICENSE,README,README.md}
 rm -rf ./*/{LICENSE,README,README.md}
 rm -rf ./*/*/{LICENSE,README,README.md}
-mkdir -p files/usr/bin/AdGuardHome/data
 }
 
 ################################################################################################################
 
 
-# LEDE源码通用diy1.sh文件
+# LEAN源码通用diy1.sh文件
 
-Diy_lede() {
-echo "LEDE源码自定义1"
+Diy_lean() {
+echo "LEAN源码自定义1"
 cp -Rf build/common/LEDE/* "${PATH1}"
-if [[ "${Modelfile}" == "Lede_x86_64" ]]; then
+if [[ "${Modelfile}" == "Lean_x86_64" ]]; then
 sed -i '/IMAGES_GZIP/d' "${PATH1}/${CONFIG_FILE}" > /dev/null 2>&1
 echo -e "\nCONFIG_TARGET_IMAGES_GZIP=y" >> "${PATH1}/${CONFIG_FILE}"
 fi
-rm -rf package/lean/luci-theme-argon
 
 git clone https://github.com/fw876/helloworld package/luci-app-ssr-plus
 
 }
 
-# LEDE源码通用diy2.sh文件（openwrt机型文件夹也使用）
+# LEAN源码通用diy2.sh文件（openwrt机型文件夹也使用）
 
-Diy_lede2() {
-echo "LEDE源码自定义2"
+Diy_lean2() {
+echo "LEAN源码自定义2"
 }
 
 ################################################################################################################
@@ -116,9 +113,12 @@ devices=("phicomm-n1" "rk3328" "s9xxx" "vplus")
 
 Diy_notice() {
 echo ""
-echo "	《公告内容》"
-echo " 祝大家新年快乐、生活愉快！"
-echo " 使用中有疑问的可以加入电报群，跟群友交流"
+echo "《免责声明》"
+echo "脚本仅用于编译路由固件"
+echo "不得传播用于商业行为"
+echo "须遵守相关法律法规"
+echo "产生任何后果与脚本作者无关"
+echo "特此声明！！！"
 echo ""
 }
 
@@ -132,7 +132,7 @@ else
 	Firmware_mz="${Up_Firmware}"
 	Firmware_hz="${Firmware_sfx}"
 fi
-if [[ "${Modelfile}" =~ (Lede_phicomm_n1|Project_phicomm_n1) ]]; then
+if [[ "${Modelfile}" =~ (Lean_phicomm_n1|Project_phicomm_n1) ]]; then
 	TARGET_PROFILE="N1,Vplus,Beikeyun,L1Pro,S9xxx"
 fi
 echo ""
@@ -190,9 +190,6 @@ if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo " 固件版本: ${Openwrt_Version}"
 	echo " 云端路径: ${Github_UP_RELEASE}"
 	echo " 《编译成功，会自动把固件发布到指定地址，然后才会生成云端路径》"
-	echo " 《请把“REPO_TOKEN”密匙设置好,没设置好密匙不能发布就生成不了云端地址》"
-	echo " 《x86-64、phicomm_k2p、phicomm-k3、newifi-d2已自动适配固件名字跟后缀，无需自行设置》"
-	echo " 《如有其他机子可以用定时更新固件的话，请告诉我，我把固件名字跟后缀适配了》"
 	echo ""
 else
 	echo " 把定时自动更新插件编译进固件: 关闭"
