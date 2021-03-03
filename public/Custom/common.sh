@@ -7,14 +7,19 @@ Diy_all() {
 echo "all"
 mv common/{AutoUpdate.sh,AutoBuild_Tools.sh} package/base-files/files/bin
 chmod +x package/base-files/files/bin/* ./
-git clone https://github.com/gd0772/package.git package/diy
-curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/x86.sh | sh
 }
 
 # 全脚本源码通用diy2.sh文件
 
 Diy_all2() {
 echo "all2"
+git clone https://github.com/openwrt-dev/po2lmo.git
+pushd po2lmo
+make && sudo make install
+popd
+rm -rf {LICENSE,README,README.md}
+rm -rf ./*/{LICENSE,README,README.md}
+rm -rf ./*/*/{LICENSE,README,README.md}
 }
 
 ################################################################################################################
@@ -26,7 +31,7 @@ Diy_lean() {
 echo "LEAN源码自定义1"
 }
 
-# LEAN源码通用diy2.sh文件（openwrt机型文件夹也使用）
+# LEDE源码通用diy2.sh文件（openwrt机型文件夹也使用）
 
 Diy_lean2() {
 echo "LEAN源码自定义2"
@@ -43,6 +48,7 @@ echo "LEAN源码自定义2"
 
 Diy_lienol() {
 echo "LIENOL源码自定义1"
+}
 
 # LIENOL源码通用diy2.sh文件（openwrt机型文件夹也使用）
 
@@ -61,7 +67,6 @@ echo "LIENOL源码自定义2"
 
 Diy_immortalwrt() {
 echo "天灵源码自定义1"
-
 }
 
 # 天灵源码通用diy2.sh文件（openwrt机型文件夹也使用）
@@ -107,7 +112,7 @@ DEVICES="$(awk -F '[="]+' '/TARGET_BOARD/{print $2}' .config)"
 SUBTARGETS="$(awk -F '[="]+' '/TARGET_SUBTARGET/{print $2}' .config)"
 if [[ "${DEVICES}" == "x86" ]]; then
 	TARGET_PRO="x86-${SUBTARGETS}"
-elif [[ ${Modelfile} =~ (Lean_phicomm_n1|Project_phicomm_n1) ]]; then
+elif [[ ${Modelfile} =~ (Lede_phicomm_n1|Project_phicomm_n1) ]]; then
 	TARGET_PRO="n1,Vplus,Beikeyun,L1Pro,S9xxx"
 else
 	TARGET_PRO="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/.*DEVICE_(.*)=y/\1/')"
@@ -137,6 +142,8 @@ else
 fi
 if [[ ${UPLOAD_COWTRANSFER} == "true" ]]; then
 	echo "上传固件到到【奶牛快传】和【WETRANSFER】: 开启"
+else
+	echo "上传固件到到【奶牛快传】和【WETRANSFER】: 关闭"
 fi
 if [[ ${UPLOAD_RELEASE} == "true" ]]; then
 	echo "发布固件: 开启"
@@ -155,3 +162,4 @@ else
 	echo "把定时自动更新插件编译进固件: 关闭"
 fi
 }
+© 2021 GitHub, Inc.
