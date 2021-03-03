@@ -34,7 +34,7 @@ rm -rf ./*/*/{LICENSE,README,README.md}
 Diy_lean() {
 echo "LEAN源码自定义1"
 cp -Rf build/common/* "${PATH1}"
-if [[ "${Modelfile}" == "Lean_x86_64" ]]; then
+if [[ "${Modelfile}" == "OpenWrt_x86_64" ]]; then
 sed -i '/IMAGES_GZIP/d' "${PATH1}/${CONFIG_FILE}" > /dev/null 2>&1
 echo -e "\nCONFIG_TARGET_IMAGES_GZIP=y" >> "${PATH1}/${CONFIG_FILE}"
 fi
@@ -187,6 +187,9 @@ if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo " 固件版本: ${Openwrt_Version}"
 	echo " 云端路径: ${Github_UP_RELEASE}"
 	echo " 《编译成功，会自动把固件发布到指定地址，然后才会生成云端路径》"
+	echo " 《请把“REPO_TOKEN”密匙设置好,没设置好密匙不能发布就生成不了云端地址》"
+	echo " 《x86-64、phicomm_k2p、phicomm-k3、newifi-d2已自动适配固件名字跟后缀，无需自行设置》"
+	echo " 《如有其他机子可以用定时更新固件的话，请告诉我，我把固件名字跟后缀适配了》"
 	echo ""
 else
 	echo " 把定时自动更新插件编译进固件: 关闭"
