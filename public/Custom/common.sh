@@ -13,6 +13,7 @@ chmod +x package/base-files/files/bin/* ./
 
 Diy_all2() {
 echo "all2"
+git clone https://github.com/gd0772/package.git package/diy
 }
 
 ################################################################################################################
