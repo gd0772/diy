@@ -33,8 +33,8 @@ rm -rf ./*/*/{LICENSE,README,README.md}
 
 Diy_lean() {
 echo "LEAN源码自定义1"
-cp -Rf build/common/* "${PATH1}"
-if [[ "${Modelfile}" == "Lean_x86_64" ]]; then
+cp -Rf build/common/LEDE* "${PATH1}"
+if [[ "${Modelfile}" == "Lean_openwrt" ]]; then
 sed -i '/IMAGES_GZIP/d' "${PATH1}/${CONFIG_FILE}" > /dev/null 2>&1
 echo -e "\nCONFIG_TARGET_IMAGES_GZIP=y" >> "${PATH1}/${CONFIG_FILE}"
 fi
