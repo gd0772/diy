@@ -33,14 +33,11 @@ rm -rf ./*/*/{LICENSE,README,README.md}
 
 Diy_lean() {
 echo "LEAN源码自定义1"
-cp -Rf build/common/lean/* "${PATH1}"
+cp -Rf build/common/LEAN/* "${PATH1}"
 if [[ "${Modelfile}" == "Lean_x86_64" ]]; then
 sed -i '/IMAGES_GZIP/d' "${PATH1}/${CONFIG_FILE}" > /dev/null 2>&1
 echo -e "\nCONFIG_TARGET_IMAGES_GZIP=y" >> "${PATH1}/${CONFIG_FILE}"
 fi
-
-git clone https://github.com/fw876/helloworld package/luci-app-ssr-plus
-
 }
 
 # LEAN源码通用diy2.sh文件（openwrt机型文件夹也使用）
