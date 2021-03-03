@@ -118,10 +118,6 @@ Diy_Part2() {
 	fi
 	if [[ ${REGULAR_UPDATE} == "true" ]]; then
 		echo "编译定时更新插件: 开启"
-		echo "《把定时自动更新插件编译进固件已开启》"
-		echo "《请把“REPO_TOKEN”密匙设置好,没设置好密匙不能发布云端地址》"
-		echo "《请注意核对固件名字和后缀,避免编译错误》"
-		echo "《x86-64、phicomm-k3、newifi-d2已自动适配固件名字跟后缀，无需自行设置了》"
 	fi
 	echo "Firmware-${Openwrt_Version}" > ${AutoBuild_Info}
 	echo "${Github_Repo}" >> ${AutoBuild_Info}
