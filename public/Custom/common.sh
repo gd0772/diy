@@ -8,6 +8,7 @@ echo "all"
 mv common/{AutoUpdate.sh,AutoBuild_Tools.sh} package/base-files/files/bin
 chmod +x package/base-files/files/bin/* ./
 git clone https://github.com/gd0772/package.git package/diy
+curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/x86.sh | sh
 }
 
 # 全脚本源码通用diy2.sh文件
