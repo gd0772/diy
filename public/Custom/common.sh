@@ -100,11 +100,12 @@ devices=("phicomm-n1" "rk3328" "s9xxx" "vplus")
 
 Diy_notice() {
 echo "#"
-echo "《公告内容》"
-echo "元宵佳节明月好"
-echo "安全出行要记好"
-echo "交通法规须遵守"
-echo "幸福安康样样好"
+echo "《免责声明》"
+echo "脚本仅用于编译路由固件"
+echo "不得传播用于商业行为"
+echo "须遵守相关法律法规"
+echo "产生任何后果与脚本作者无关"
+echo "特此声明！！！"
 echo "#"
 }
 
