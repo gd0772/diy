@@ -125,20 +125,16 @@ echo ""
 
 Diy_xinxi_Base() {
 GET_TARGET_INFO
-DEVICES="$(awk -F '[="]+' '/TARGET_BOARD/{print $2}' .config)"
-SUBTARGETS="$(awk -F '[="]+' '/TARGET_SUBTARGET/{print $2}' .config)"
-if [[ "${DEVICES}" == "x86" ]]; then
-	TARGET_PRO="x86-${SUBTARGETS}"
+if [[ "${TARGET_PROFILE}" =~ (x86-64|phicomm-k3|xiaomi_mir3g|d-team_newifi-d2|phicomm_k2p|k2p) ]]; then
+	Firmware_mz="${TARGET_PROFILE}自动适配"
+	Firmware_hz="${TARGET_PROFILE}自动适配"
 else
 	Firmware_mz="${Up_Firmware}"
 	Firmware_hz="${Firmware_sfx}"
 fi
 if [[ "${Modelfile}" =~ (Lede_phicomm_n1|Project_phicomm_n1) ]]; then
 	TARGET_PROFILE="N1,Vplus,Beikeyun,L1Pro,S9xxx"
-else
-	TARGET_PRO="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/.*DEVICE_(.*)=y/\1/')"
 fi
-[[ -z "${TARGET_PRO}" ]] && TARGET_PRO="Unknown"
 echo ""
 echo " 编译源码: ${COMP2}"
 echo " 源码链接: ${REPO_URL}"
