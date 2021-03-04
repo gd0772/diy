@@ -139,7 +139,6 @@ else
 	TARGET_PRO="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/.*DEVICE_(.*)=y/\1/')"
 fi
 [[ -z "${TARGET_PRO}" ]] && TARGET_PRO="Unknown"
-fi
 echo ""
 echo " 编译源码: ${COMP2}"
 echo " 源码链接: ${REPO_URL}"
