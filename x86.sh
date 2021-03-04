@@ -1,6 +1,8 @@
 #!/bin/bash
 #=================================================
 # Description: Build OpenWrt using GitHub Actions
+# The script is maintained by gd772
+
 # echo '删除重复多余主题'
 rm -rf ./feeds/freifunk/themes
 rm -rf ./package/lean/luci-theme-netgear
