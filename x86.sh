@@ -56,8 +56,9 @@ sed -i 's/PassWall/Pass Wall/g' package/diy/passwall/luci-app-passwall/po/zh-cn/
 sed -i 's/广告屏蔽大师 Plus+/广告屏蔽/g' package/lean/luci-app-adbyby-plus/po/zh-cn/adbyby.po
 sed -i 's/GodProxy滤广告/KPR去广告/g' package/diy/luci-app-godproxy/luasrc/controller/koolproxy.lua
 sed -i 's/GodProxy滤广告/KPR去广告/g' package/diy/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
-sed -i 's/GodProxy 访问控制/KoolProxyR 访问控制/g' package/diy/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
-sed -i 's/GodProxy 帮助支持/KoolProxyR 帮助支持/g' package/diy/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
+sed -i 's/GodProxy 访问控制/KPR 访问控制/g' package/diy/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
+sed -i 's/GodProxy 帮助支持/KPR 帮助支持/g' package/diy/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
+sed -i 's/GodProxy滤广告/KPR去广告/g' package/diy/luci-app-godproxy/luasrc/model/cbi/koolproxy
 
 sed -i 's/京东签到服务/京东签到/g' package/diy/luci-app-jd-dailybonus/luasrc/controller/jd-dailybonus.lua
 sed -i 's/KMS 服务器/KMS 激活/g' package/lean/luci-app-vlmcsd/po/zh-cn/vlmcsd.zh-cn.po
