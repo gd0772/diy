@@ -45,6 +45,8 @@ svn co https://github.com/gd0772/diy/trunk/public/luci-app-netdata ./package/lea
 svn co https://github.com/gd0772/diy/trunk/public/netdata ./feeds/packages/admin/netdata
 # echo '替换USB打印'
 svn co https://github.com/gd0772/diy/trunk/public/luci-app-usb-printer ./package/lean/luci-app-usb-printer
+# echo '添加 KPR去广告'
+git clone https://github.com/project-lede/luci-app-godproxy.git ./package/diy/luci-app-godproxy
 
 # echo '修改插件名称'
 sed -i 's/"管理权"/"改密码"/g' feeds/luci/modules/luci-base/po/zh-cn/base.po
