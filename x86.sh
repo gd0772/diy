@@ -60,6 +60,8 @@ sed -i 's/GodProxy滤广告/KPR去广告/g' package/diy/luci-app-godproxy/luasrc
 sed -i 's/GodProxy滤广告/KPR去广告/g' package/diy/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
 sed -i 's/GodProxy 访问控制/KPR 访问控制/g' package/diy/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
 sed -i 's/GodProxy 帮助支持/KPR 帮助支持/g' package/diy/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
+sed -i 's/GodProxy是/是/g' package/diy/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
+sed -i 's/GodProxy/KoolProxyR/g' package/diy/luci-app-godproxy/luasrc/model/cbi/koolproxy/global.lua
 sed -i 's/GodProxy滤广告/KPR去广告/g' package/diy/luci-app-godproxy/luasrc/model/cbi/koolproxy/rss_rule.lua
 sed -i 's/Shaoxia的KoolProxyR详细使用说明/关于 KPR 的详细使用说明/g' package/diy/luci-app-godproxy/luasrc/view/koolproxy/feedback.htm
 sed -i 's/京东签到服务/京东签到/g' package/diy/luci-app-jd-dailybonus/luasrc/controller/jd-dailybonus.lua
