@@ -25,7 +25,7 @@ sed -i "s/192.168.1.1/192.168.123.2/g" package/base-files/files/bin/config_gener
 
 # echo '替换系统文件'
 curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/public/zzz-default-settings > ./package/lean/default-settings/files/zzz-default-settings
-curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/x86/index.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
+curl -fsSL https://raw.githubusercontent.com/gd0772/diy/main/X86/index.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
 
 # echo '添加 SSR Plus+'
 git clone https://github.com/Mattraks/helloworld.git ./package/diy/ssrplus
