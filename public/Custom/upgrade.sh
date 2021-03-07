@@ -9,12 +9,13 @@ GET_TARGET_INFO() {
 	TARGET_SUBTARGET="$(awk -F '[="]+' '/TARGET_SUBTARGET/{print $2}' .config)"
 	if [[ "${TARGET_BOARD}" == "x86" ]];then
 		TARGET_PROFILE="x86-64"
-
+	else
+		TARGET_PROFILE="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/.*DEVICE_(.*)=y/\1/')"
 	fi
 	[[ -z "${TARGET_PROFILE}" ]] && TARGET_PROFILE="Unknown"
 	case "${TARGET_PROFILE}" in
 	x86-64)
-
+		if [ `grep -c "CONFIG_TARGET_IMAGES_GZIP=y" ${Home}/.config` -eq '1' ]; then
 			Firmware_sfxo="img.gz"
 		else
 			Firmware_sfxo="img"
