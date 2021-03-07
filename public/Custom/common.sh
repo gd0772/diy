@@ -14,10 +14,6 @@ git clone https://github.com/gd0772/package.git package/diy
 
 Diy_all2() {
 echo "all2"
-git clone https://github.com/openwrt-dev/po2lmo.git
-pushd po2lmo
-make && sudo make install
-popd
 rm -rf {LICENSE,README,README.md}
 rm -rf ./*/{LICENSE,README,README.md}
 rm -rf ./*/*/{LICENSE,README,README.md}
