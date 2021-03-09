@@ -42,17 +42,17 @@ List_Info() {
 	echo "固件下载位置:	/tmp/Downloads"
 	echo "当前设备:	${CURRENT_Device}"
 	echo "默认设备:	${DEFAULT_Device}"
-	echo "当前固件版本:	${CURRENT_Version}"
-	echo "固件名称:	AutoBuild-${CURRENT_Device}-${CURRENT_Version}${Firmware_SFX}"
+	echo "当前固件版本:	${CURRENT_Ver}"
+	echo "固件名称:	${Firmware_COMP1}-${CURRENT_Version}${Firmware_SFX}"
 	echo "Github 地址:	${Github}"
 	echo "解析 API 地址:	${Github_Tags}"
 	echo "固件下载地址:	${Github_Download}"
 	echo "作者/仓库:	${Author}"
-	if [[ ${DEFAULT_Device} == "x86_64" ]];then
+	if [[ ${DEFAULT_Device} == "x86-64" ]];then
 		echo "EFI 引导: 	${EFI_Boot}"
 		echo "固件压缩:	${Compressed_x86}"
 	fi
-	echo "固件格式:	${Firmware_SFX}"
+	echo "固件格式:	${Firmware_GESHI}"
 	exit
 }
 
@@ -77,10 +77,12 @@ CURRENT_Version="$(awk 'NR==1' /etc/openwrt_info)"
 Github="$(awk 'NR==2' /etc/openwrt_info)"
 DEFAULT_Device="$(awk 'NR==3' /etc/openwrt_info)"
 Firmware_Type="$(awk 'NR==4' /etc/openwrt_info)"
+Firmware_COMP1="$(awk 'NR==5' /etc/openwrt_info)"
+Firmware_COMP2="$(awk 'NR==6' /etc/openwrt_info)"
 TMP_Available="$(df -m | grep "/tmp" | awk '{print $4}' | awk 'NR==1')"
 Overlay_Available="$(df -h | grep ":/overlay" | awk '{print $4}' | awk 'NR==1')"
 case ${DEFAULT_Device} in
-x86_64)
+x86-64)
 	[[ -z ${Firmware_Type} ]] && Firmware_Type="img"
 	if [[ "${Firmware_Type}" == "img.gz" ]];then
 		Compressed_x86="1"
@@ -90,25 +92,30 @@ x86_64)
 	if [ -d /sys/firmware/efi ];then
 		EFI_Boot="1"
 		BOOT_Type="-UEFI"
+		GESHI_Type="UEFI"
 	else
 		EFI_Boot="0"
 		BOOT_Type="-Legacy"
+		GESHI_Type="Legacy"
 	fi
 	Firmware_SFX="${BOOT_Type}.${Firmware_Type}"
+	Firmware_GESHI="${GESHI_Type}.${Firmware_Type}"
 	Detail_SFX="${BOOT_Type}.detail"
-	CURRENT_Device="x86_64"
+	CURRENT_Device="x86-64"
 	Space_RQM=500
 ;;
 *)
 	CURRENT_Device="$(jsonfilter -e '@.model.id' < /etc/board.json | tr ',' '_')"
 	Firmware_SFX=".${Firmware_Type}"
-	[[ -z ${Firmware_SFX} ]] && Firmware_SFX=".bin"
+	Firmware_GESHI=".${Firmware_Type}"
+	[[ -z ${Firmware_SFX} ]] && Firmware_SFX=".${Firmware_Type}"
 	Detail_SFX=".detail"
 	Space_RQM=50
 esac
-Github_Download="${Github}/releases/download/AutoUpdate"
+CURRENT_Ver="${CURRENT_Version}${BOOT_Type}"
+Github_Download="${Github}/releases/download/update_Firmware"
 Author="${Github##*com/}"
-Github_Tags="https://api.github.com/repos/${Author}/releases/latest"
+Github_Tags="https://api.github.com/repos/${Author}/releases/tags/update_Firmware"
 cd /etc
 clear && echo "Openwrt-AutoUpdate Script ${Version}"
 if [[ -z "${Input_Option}" ]];then
@@ -169,7 +176,7 @@ if [[ ! "${Force_Update}" == "1" ]] && [[ ! "${AutoUpdate_Mode}" == "1" ]];then
 	grep "curl" /tmp/Package_list > /dev/null 2>&1
 	if [[ ! $? -ne 0 ]];then
 		Google_Check=$(curl -I -s --connect-timeout 5 www.google.com -w %{http_code} | tail -n1)
-		[ ! "$Google_Check" == 200 ] && TIME && echo "Google 连接失败,可能导致固件下载速度缓慢!"
+		[ ! "$Google_Check" == 200 ] && TIME && echo "梯子翻墙失败,可能导致固件下载速度缓慢!"
 	fi
 fi
 Install_Pkg wget
@@ -189,19 +196,19 @@ if [[ ! "$?" == 0 ]];then
 	exit
 fi
 TIME && echo "正在获取云端固件版本..."
-GET_Firmware=$(cat /tmp/Github_Tags | egrep -o "AutoBuild-${CURRENT_Device}-R[0-9].+-[0-9]+${Firmware_SFX}" | awk 'END {print}')
-GET_Version=$(echo ${GET_Firmware} | egrep -o "R[0-9].+-[0-9]+")
+GET_Firmware="$(cat /tmp/Github_Tags | egrep -o "${Firmware_COMP1}-${Firmware_COMP2}-${DEFAULT_Device}-[a-zA-Z0-9_-]+.*?[0-9]+${Firmware_SFX}" | awk 'END {print}')"
+GET_Version="$(echo ${GET_Firmware} | egrep -o "${Firmware_COMP2}-${DEFAULT_Device}-[a-zA-Z0-9_-]+.*?[0-9]+${BOOT_Type}")"
 if [[ -z "${GET_Firmware}" ]] || [[ -z "${GET_Version}" ]];then
 	TIME && echo "云端固件版本获取失败!"
 	exit
 fi
-Firmware_Info="$(echo ${GET_Firmware} | egrep -o "AutoBuild-${CURRENT_Device}-R[0-9].+-[0-9]+")"
+Firmware_Info="$(echo ${GET_Firmware} | egrep -o "${Firmware_COMP1}-${Firmware_COMP2}-${DEFAULT_Device}-[a-zA-Z0-9_-]+.*?[0-9]+")"
 Firmware="${GET_Firmware}"
 Firmware_Detail="${Firmware_Info}${Detail_SFX}"
 echo -e "\n固件作者: ${Author%/*}"
 echo "设备名称: ${CURRENT_Device}"
-echo "固件格式: ${Detail_SFX}"
-echo -e "\n当前固件版本: ${CURRENT_Version}"
+echo "固件格式: ${Firmware_GESHI}"
+echo -e "\n当前固件版本: ${CURRENT_Ver}"
 echo "云端固件版本: ${GET_Version}"
 if [[ ! ${Force_Update} == 1 ]];then
 	if [[ ${CURRENT_Version} == ${GET_Version} ]];then
@@ -247,7 +254,7 @@ if [[ ! "${GET_MD5}" == "${CURRENT_MD5}" ]];then
 	TIME && echo -e "MD5 对比失败,请检查网络后重试!"
 	exit
 else
-	TIME && echo -e "MD5 对比通过!"
+	TIME && echo -e "MD5 对比成功!"
 fi
 if [[ ${Compressed_x86} == 1 ]];then
 	TIME && echo "检测到固件为 [.gz] 压缩格式,开始解压固件..."
