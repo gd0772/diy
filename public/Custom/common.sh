@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/mdtycl/AutoBuild-OpenWrt
-# common Module by mdtycl
+# common Module by gd0772
 # matrix.target=${Modelfile}
 
 # 全脚本源码通用diy.sh文件
