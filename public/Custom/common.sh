@@ -285,24 +285,24 @@ echo " 编译机型: ${TARGET_PROFILE}"
 echo " 固件作者: ${Author}"
 echo " 仓库地址: ${Github_Repo}"
 if [[ ${UPLOAD_BIN_DIR} == "true" ]]; then
-	echo " 上传BIN文件夹(固件+IPK): 开启"
+	echo " 上传文件: 开启"
 else
-	echo " 上传BIN文件夹(固件+IPK): 关闭"
+	echo " 上传文件: 关闭"
 fi
 if [[ ${UPLOAD_CONFIG} == "true" ]]; then
-	echo " 上传[.config]配置文件: 开启"
+	echo " 上传配置: 开启"
 else
-	echo " 上传[.config]配置文件: 关闭"
+	echo " 上传配置: 关闭"
 fi
 if [[ ${UPLOAD_FIRMWARE} == "true" ]]; then
-	echo " 上传固件在github actions: 开启"
+	echo " 上传固件: 开启"
 else
-	echo " 上传固件在github actions: 关闭"
+	echo " 上传固件: 关闭"
 fi
 if [[ ${UPLOAD_COWTRANSFER} == "true" ]]; then
-	echo " 上传固件到到【奶牛快传】和【WETRANSFER】: 开启"
+	echo " 上传固件到到【奶牛快传】: 开启"
 else
-	echo " 上传固件到到【奶牛快传】和【WETRANSFER】: 关闭"
+	echo " 上传固件到到【奶牛快传】: 关闭"
 fi
 if [[ ${UPLOAD_RELEASE} == "true" ]]; then
 	echo " 发布固件: 开启"
@@ -324,7 +324,7 @@ if [[ ${SSHYC} == "true" ]]; then
 fi
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo
-	echo " 把定时自动更新插件编译进固件: 开启"
+	echo " 在线更新固件: 开启"
 	echo " 插件版本: ${AutoUpdate_Version}"
 	echo " 固件名称: ${Firmware_mz}"
 	echo " 固件后缀: ${Firmware_hz}"
@@ -332,7 +332,7 @@ if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo " 云端路径: ${Github_UP_RELEASE}"
 	echo
 else
-	echo " 把定时自动更新插件编译进固件: 关闭"
+	echo " 在线更新固件: 关闭"
 	echo
 fi
 echo " * 您当前使用的是【${Modelfile}】文件夹编译【${TARGET_PROFILE}】固件,编译时间 $(TZ=UTC-8 date "+%Y年%m月%d日")！*"
